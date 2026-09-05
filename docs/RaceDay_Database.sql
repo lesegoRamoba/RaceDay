@@ -1,4 +1,10 @@
 /*
+ * Version 1.0
+ * Created: 2026-09-05
+ * Last updated: 2026-09-05
+ * This script creates the RaceDay database and all required tables.
+ */
+/*
 RaceDay - Part 1, Section C
 Student: Lesego Ramoba | ST10490519
 

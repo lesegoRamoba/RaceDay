@@ -1,0 +1,59 @@
+# RaceDay Part 1: repository structure validation.
+# Place at .github/workflows/part1-validation.yml in the repository root.
+# This workflow checks deliverable presence, not SQL execution or marking quality.
+# Reference: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions
+name: RaceDay Part 1 Validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-deliverables:
+    name: Validate Part 1 files
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Check required files are present and nonempty
+        shell: bash
+        run: |
+          set -euo pipefail
+          required_files=(
+            "README.md"
+            "docs/RaceDay_ERD.drawio"
+            "docs/RaceDay_ERD.png"
+            "docs/API_Endpoint_Plan.md"
+            "docs/RaceDay_Database.sql"
+          )
+          failed=0
+          for file in "${required_files[@]}"; do
+            if [[ ! -f "$file" || ! -s "$file" ]]; then
+              echo "::error file=$file::Required file is missing or empty."
+              failed=1
+            else
+              echo "PASS: $file"
+            fi
+          done
+          if [[ "$failed" -ne 0 ]]; then
+            exit 1
+          fi
+          echo "All required Part 1 files are present and nonempty."
+
+      - name: Record validation summary
+        shell: bash
+        run: |
+          {
+            echo "## RaceDay Part 1 validation passed"
+            echo "The README, editable ERD, PNG export, API plan and SQL script are present and nonempty."
+            echo "SQL execution is verified separately in SSMS."
+            echo "This check does not assess design correctness, meaningful commits, video quality or final submission completeness."
+          } >> "$GITHUB_STEP_SUMMARY"

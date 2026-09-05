@@ -16,6 +16,7 @@ The system will support event management, participant
 enrolments, event categories, and race results.
 
 ## User Roles
+**Note:** Both roles share the same login page but are redirected to different dashboards after authentication.
 
 ### Organiser
 

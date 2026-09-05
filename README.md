@@ -1,114 +1,115 @@
-\# Raceday
+# RaceDay
 
+## Student Details
 
+- Name: Lesego Ramoba
 
-\## Student Details
+- Student Number: ST10490519
 
-\- Name: Lesego Ramoba
+## Project Overview
 
-\- Student Number: ST10490519
-
-
-
-\## Project Overview
-
-Race Day is a planned web-based event management system for
+RaceDay is a planned web-based event management system for
 
 running, walking, and cycling events in South Africa.
-
-
 
 The system will support event management, participant
 
 enrolments, event categories, and race results.
 
+## User Roles
 
+### Organiser
 
-\## User Roles
+- Create, view, update, and delete their events.
 
+- Manage categories for their events.
 
+- View enrolments for their events.
 
-\### Organizer
+- Record and publish participant finish times and positions.
 
-\- Create, view, update, and delete their events.
+### Participant
 
-\- Manage categories for their events.
+- Register and log in.
 
-\- View enrolments for their events.
+- View and update their own profile.
 
-\- Record and publish participant finish times and positions.
+- Browse events and available categories.
 
+- Enter an event by selecting a category.
 
+- View their own enrolments and results.
 
-\### Participant
-
-\- Register and log in.
-
-\- View and update their own profile.
-
-\- Browse events and available categories.
-
-\- Enter an event by selecting a category.
-
-\- View their own enrolments and results.
-
-
-
-\## Part 1: System Planning and Database
+## Part 1: System Planning and Database
 
 Part 1 includes:
 
-\- An Entity Relationship Diagram (ERD).
+- An Entity Relationship Diagram (ERD).
 
-\- An API endpoint plan.
+- An API endpoint plan.
 
-\- A SQL Server database creation and sample-data script.
+- A SQL Server database creation and sample-data script.
 
-\- A GitHub Actions workflow to validate repository structure.
+- A GitHub Actions workflow to validate repository structure.
 
-
-
-Planning documents and the SQL script will be stored in /docs.
+Planning documents and the SQL script are stored in /docs.
 
 No application code is required for Part 1.
 
+## Current Progress
+The ERD, API endpoint plan and SQL database script are prepared.
+The SQL script ran successfully in SSMS, and the constraint totals
+matched the expected values. GitHub Actions file validation passed.
 
+The video, final review and minimum 20 meaningful commits are
+still outstanding.
 
-\## Current Progress
+## Setup Instructions
 
-Repository initialized. Planning and database work are in progress.
+1. Clone or download this repository.
+2. Open SQL Server Management Studio (SSMS).
+3. Connect to your SQL Server instance.
+   The instance used for testing was localhost\SQLEXPRESS.
+4. Open docs/RaceDay_Database.sql.
+5. With no text selected, press F5 to execute the entire script.
+6. Check the Results and Messages tabs for successful execution.
 
+The script creates RaceDay if it does not exist. It stops if
+the database already contains tables, without overwriting them.
+The SQL login needs permission to create databases and tables.
 
+Expected sample totals:
 
-\## Setup Instructions
+- Roles: 2
+- Users: 4
+- Events: 3
+- Categories: 6
+- Enrolments: 6
+- Results: 2
 
-SQL execution instructions will be added after the database
+Run docs/Verify_Constraints.sql to check the constraint totals:
+8 CHECK, 5 DEFAULT, 7 FOREIGN KEY, 6 PRIMARY KEY and 6 UNIQUE.
 
-script has been created and tested.
+Sample users contain password hashes. Their randomly generated
+passwords were discarded, so they are not usable login accounts.
 
+## CI Validation Evidence
+The workflow in .github/workflows/part1-validation.yml checks
+that the required Part 1 files exist and are not empty.
+It runs on pushes and pull requests and supports manual runs.
 
+SQL execution was checked separately in SSMS.
 
-\## CI Validation Evidence
+![Successful GitHub Actions validation](docs/CI_Green_Build.png)
 
-A screenshot of a successful GitHub Actions run will be added
-
-before submission.
-
-
-
-\## Video Presentation
+## Video Presentation
 
 An unlisted YouTube demonstration link will be added before
 
 submission.
 
-
-
-\## AI Assistance Disclosure
-
-ChatGPT has been used for step-by-step guidance on repository
-
-setup and drafting this README. This disclosure will be updated
-
-to reflect any further assistance used.
-
+## AI Assistance Disclosure
+ChatGPT assisted with repository setup, drafting and refining the ERD,
+API endpoint plan, SQL script, verification query, GitHub Actions workflow
+and README, and troubleshooting the tools used. The SQL script was run
+in SSMS, and the GitHub Actions file validation completed successfully.

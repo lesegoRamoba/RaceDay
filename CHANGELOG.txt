@@ -1,0 +1,7 @@
+# Changelog - Part 1
+
+## 2026-09-05
+- Initial ERD designed with 6 entities.
+- API endpoint plan completed covering auth, profiles, events, categories, enrolments, and results.
+- SQL script created with full constraints and sample data.
+- GitHub Actions workflow added for file validation.

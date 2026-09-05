@@ -102,13 +102,8 @@ It runs on pushes and pull requests and supports manual runs.
 
 SQL execution was checked separately in SSMS.
 
-!\[Successful GitHub Actions validation](docs/CI\_Green\_Build.png)
-
+![Successful GitHub Actions validation](docs/CI_Green_Build.png)
 ## Video Presentation
 
-An unlisted YouTube demonstration link will be added before
-
-submission.
-
-## 
+[Watch my RaceDay Part 1 Video Presentation](https://youtu.be/zF8vHiiyGis)
 

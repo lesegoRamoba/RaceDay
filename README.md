@@ -71,12 +71,21 @@ The SQL login needs permission to create databases and tables.
 
 Expected sample totals:
 
-* Roles: 2
-* Users: 4
-* Events: 3
-* Categories: 6
-* Enrolments: 6
-* Results: 2
+| Table | Expected Rows |
+
+|-------|---------------|
+
+| Roles | 2 |
+
+| Users | 4 |
+
+| Events | 3 |
+
+| Categories | 6 |
+
+| Enrolments | 6 |
+
+| Results | 2 |
 
 Run docs/Verify\_Constraints.sql to check the constraint totals:
 8 CHECK, 5 DEFAULT, 7 FOREIGN KEY, 6 PRIMARY KEY and 6 UNIQUE.
@@ -100,10 +109,5 @@ An unlisted YouTube demonstration link will be added before
 
 submission.
 
-## AI Assistance Disclosure
-
-ChatGPT assisted with repository setup, drafting and refining the ERD,
-API endpoint plan, SQL script, verification query, GitHub Actions workflow
-and README, and troubleshooting the tools used. The SQL script was run
-in SSMS, and the GitHub Actions file validation completed successfully.
+## 
 

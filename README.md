@@ -179,7 +179,7 @@ The Part 2 GitHub Actions build passed successfully.
 
 ### Part 2 Demonstration Video
 
-YouTube demonstration: To be added after recording.
+YouTube demonstration: [](https://youtu.be/V2Ta4LGTJIs).
 
 ### Development Status
 

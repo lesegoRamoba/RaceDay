@@ -1,192 +1,393 @@
+
 # RaceDay
 
 ## Student Details
 
-* Name: Lesego Ramoba
-* Student Number: ST10490519
-
-## Project Overview
-
-RaceDay is a planned web-based event management system for
-
-running, walking, and cycling events in South Africa.
-
-The system will support event management, participant
-
-enrolments, event categories, and race results.
-
-## User Roles
-**Note:** Both roles share the same login page but are redirected to different dashboards after authentication.
-
-### Organiser
-
-* Create, view, update, and delete their events.
-* Manage categories for their events.
-* View enrolments for their events.
-* Record and publish participant finish times and positions.
-
-### Participant
-
-* Register and log in.
-* View and update their own profile.
-* Browse events and available categories.
-* Enter an event by selecting a category.
-* View their own enrolments and results.
-
-## Part 1: System Planning and Database
-
-Part 1 includes:
-
-* An Entity Relationship Diagram (ERD).
-* An API endpoint plan.
-* A SQL Server database creation and sample-data script.
-* A GitHub Actions workflow to validate repository structure.
-
-Planning documents and the SQL script are stored in /docs.
-
-No application code is required for Part 1.
-
-## Current Progress
-
-The ERD, API endpoint plan and SQL database script are prepared.
-The SQL script ran successfully in SSMS, and the constraint totals
-matched the expected values. GitHub Actions file validation passed.
-
-The video, final review and minimum 20 meaningful commits are
-still outstanding.
-
-## Setup Instructions
-
-1. Clone or download this repository.
-2. Ensure your SQL Server version is 2016 or higher.
-3. Open SQL Server Management Studio (SSMS).
-4. Connect to your SQL Server instance.
-The instance used for testing was localhost\\SQLEXPRESS.
-5. Open docs/RaceDay\_Database.sql.
-6. With no text selected, press F5 to execute the entire script.
-7. Check the Results and Messages tabs for successful execution.
-
-The script creates RaceDay if it does not exist. It stops if
-the database already contains tables, without overwriting them.
-The SQL login needs permission to create databases and tables.
-
-Expected sample totals:
-
-| Table | Expected Rows |
-
-|-------|---------------|
-
-| Roles | 2 |
-
-| Users | 4 |
-
-| Events | 3 |
-
-| Categories | 6 |
-
-| Enrolments | 6 |
-
-| Results | 2 |
-
-Run docs/Verify\_Constraints.sql to check the constraint totals:
-8 CHECK, 5 DEFAULT, 7 FOREIGN KEY, 6 PRIMARY KEY and 6 UNIQUE.
-
-Sample users contain password hashes. Their randomly generated
-passwords were discarded, so they are not usable login accounts.
-
-## CI Validation Evidence
-
-The workflow in .github/workflows/part1-validation.yml checks
-that the required Part 1 files exist and are not empty.
-It runs on pushes and pull requests and supports manual runs.
-
-SQL execution was checked separately in SSMS.
-
-![Successful GitHub Actions validation](docs/CI_Green_Build.png)
-## Video Presentation
-
-[Watch my RaceDay Part 1 Video Presentation](https://youtu.be/zF8vHiiyGis)
-
+- **Name:** Lesego Ramoba
+- **Student Number:** ST10490519
+- **Project:** RaceDay Event Management System
+- **Technologies:** C#, ASP.NET Core, SQL Server, Entity Framework Core, GitHub Actions
 
 ---
 
-## Part 2: RaceDay REST API
+## Project Overview
 
-Part 2 implements a REST API using ASP.NET Core,
-C#, Entity Framework Core and SQL Server.
+RaceDay is a web-based event management system designed for running, walking, and cycling events in South Africa.
 
-### Technologies Used
+The system aims to simplify event management, participant registration, event enrolments, and race result tracking.
 
-- C# and ASP.NET Core Web API
+The project is developed in stages:
+
+- **Part 1:** System Planning and Database Design
+- **Part 2:** REST API Development and Testing
+
+---
+
+## User Roles
+
+The planned system supports two main user roles.
+
+### Organiser
+
+- Create, view, update, and delete events.
+- Manage event categories.
+- View participant enrolments.
+- Record and publish race results.
+- Manage participant finish times and positions.
+
+### Participant
+
+- Register and log in.
+- View and update their profile.
+- Browse available sporting events.
+- Select event categories.
+- Register for sporting events.
+- View enrolments and race results.
+
+**Note:** Role-based login and dashboards are planned features and are not yet implemented in the Part 2 API.
+
+---
+
+# Part 1: System Planning and Database
+
+## Overview
+
+Part 1 focused on the design and planning of the RaceDay system.
+
+The following components were prepared:
+
+- Entity Relationship Diagram (ERD).
+- API endpoint plan.
+- SQL Server database creation script.
+- Sample database records.
+- Database constraints and validation.
+- GitHub repository structure.
+- GitHub Actions validation workflow.
+
+All planning documentation and database scripts are stored in the `docs` folder.
+
+## Database Design
+
+The Part 1 database design contains six main tables:
+
+| Table | Sample Records |
+|-------|----------------|
+| Roles | 2 |
+| Users | 4 |
+| Events | 3 |
+| Categories | 6 |
+| Enrolments | 6 |
+| Results | 2 |
+
+The SQL script was tested successfully in SQL Server Management Studio.
+
+### Database Constraints
+
+The database validation script checks:
+
+- 8 CHECK constraints
+- 5 DEFAULT constraints
+- 7 FOREIGN KEY constraints
+- 6 PRIMARY KEY constraints
+- 6 UNIQUE constraints
+
+## Part 1 Setup Instructions
+
+1. Clone or download the GitHub repository.
+2. Install SQL Server 2016 or later.
+3. Open SQL Server Management Studio (SSMS).
+4. Connect to your SQL Server instance.
+5. Open `docs/RaceDay_Database.sql`.
+6. Execute the complete SQL script.
+7. Check the Results and Messages tabs.
+8. Run `docs/Verify_Constraints.sql`.
+
+The Part 1 script creates the RaceDay database if it does not already exist.
+
+It is designed to avoid overwriting existing database tables.
+
+Sample user passwords are not available for login because the generated passwords were discarded after hashing.
+
+## Part 1 CI/CD Validation
+
+GitHub Actions was configured to validate the required Part 1 repository files.
+
+Workflow:
+
+`.github/workflows/part1-validation.yml`
+
+The workflow verifies that the required planning documents and SQL files exist.
+
+### Part 1 CI/CD Evidence
+
+[View Successful Part 1 GitHub Actions Validation](https://github.com/lesegoRamoba/RaceDay/blob/main/docs/CI_Green_Build.png)
+
+## Part 1 Video Presentation
+
+[Watch RaceDay Part 1 Presentation](https://youtu.be/zF8vHiiyGis)
+
+---
+
+# Part 2: RaceDay REST API Development
+
+## Overview
+
+Part 2 focused on developing a functional REST API using ASP.NET Core and SQL Server.
+
+The API manages:
+
+1. Sporting Events
+2. Participants
+3. Event Registrations
+
+The application uses Entity Framework Core to communicate with the SQL Server database.
+
+## Technologies Used
+
+- C#
+- ASP.NET Core Web API
 - .NET 8
 - SQL Server LocalDB
 - Entity Framework Core 8
-- Swagger/OpenAPI
+- Swagger / OpenAPI
+- Visual Studio
+- Git and GitHub
 - GitHub Actions CI/CD
 
-### Implemented Features
+## Project Structure
 
-The API provides CRUD operations for:
+The Part 2 project is located at:
+
+`Part2/RaceDay.API`
+
+Main project components:
+
+### Models
+
+- `Event.cs`
+- `Participant.cs`
+- `Registration.cs`
+
+### Controllers
+
+- `EventsController.cs`
+- `ParticipantsController.cs`
+- `RegistrationsController.cs`
+
+### Data
+
+- `RaceDayDbContext.cs`
+
+### Database
+
+- Entity Framework Core Migrations
+- SQL Server LocalDB
+- RaceDayDB
+
+## Implemented API Features
+
+### Events API
+
+Supports:
+
+- Creating events
+- Retrieving all events
+- Retrieving an event by ID
+- Updating events
+- Deleting events
+
+### Participants API
+
+Supports:
+
+- Creating participants
+- Retrieving participant information
+- Updating participant records
+- Deleting participants
+
+### Registrations API
+
+Supports:
+
+- Creating registrations
+- Retrieving registrations
+- Updating registration records
+- Deleting registrations
+
+## REST API Endpoints
+
+| HTTP Method | Endpoint | Description |
+|-------------|----------|-------------|
+| GET | /api/Events | Retrieve all events |
+| GET | /api/Events/{id} | Retrieve an event by ID |
+| POST | /api/Events | Create an event |
+| PUT | /api/Events/{id} | Update an event |
+| DELETE | /api/Events/{id} | Delete an event |
+| GET | /api/Participants | Retrieve participants |
+| POST | /api/Participants | Create a participant |
+| GET | /api/Registrations | Retrieve registrations |
+| POST | /api/Registrations | Create a registration |
+
+Additional CRUD endpoints are provided by the generated controllers.
+
+## Part 2 Setup Instructions
+
+1. Clone or download the GitHub repository.
+2. Open `Part2/RaceDay.sln` using Visual Studio.
+3. Ensure the .NET 8 SDK is installed.
+4. Ensure SQL Server LocalDB is installed.
+5. Restore all NuGet packages.
+6. Open `appsettings.json`.
+7. Configure the `DefaultConnection` connection string.
+8. Open the NuGet Package Manager Console.
+9. Select `RaceDay.API` as the default project.
+10. Execute the following command:
+
+```powershell
+Update-Database
+```
+
+11. Wait for the migrations to complete.
+12. Press F5 to start the application.
+13. Open Swagger using `/swagger`.
+14. Test the available API endpoints.
+
+## Database Integration
+
+The API connects to SQL Server using Entity Framework Core.
+
+The development database is named:
+
+`RaceDayDB`
+
+The database includes the following tables:
 
 - Events
 - Participants
 - Registrations
+- __EFMigrationsHistory
 
-Supported HTTP methods:
-GET, POST, PUT and DELETE.
+Entity Framework Core migrations were used to generate the database structure.
 
-### Project Location
+## API Testing
 
-Part2/RaceDay.API
+API testing was performed using Swagger.
 
-### Part 2 Setup Instructions
+### Successful Tests
 
-1. Clone or download the repository.
-2. Open Part2/RaceDay.sln in Visual Studio.
-3. Ensure .NET 8 SDK and SQL Server LocalDB
-   are installed.
-4. Restore the NuGet packages.
-5. Configure DefaultConnection in
-   appsettings.json for your SQL Server instance.
-6. Open the Package Manager Console.
-7. Select RaceDay.API as the default project.
-8. Run Update-Database to apply the migrations.
-9. Press F5 to run the API.
-10. Open /swagger to test the endpoints.
+| Test | Response |
+|------|----------|
+| Retrieve Events | 200 OK |
+| Create Event | 201 Created |
+| Retrieve Participants | 200 OK |
+| Create Participant | 201 Created |
+| Retrieve Registrations | 200 OK |
+| Update Event | 204 No Content |
+| Delete Event | 204 No Content |
+| Request Nonexistent Event | 404 Not Found |
 
-### API Testing
+These tests demonstrate the basic CRUD functionality of the API.
 
-The following operations were tested using Swagger:
+## Part 2 Testing Evidence
 
-- POST: Create an event and participant.
-- GET: Retrieve events, participants and registrations.
-- PUT: Update an existing event.
-- DELETE: Delete an event.
-- GET with an invalid ID: Returns 404 Not Found.
+The following screenshots document the API testing process:
 
-Successful responses included 200 OK,
-201 Created and 204 No Content.
+### Screenshot 1: Swagger API Overview
 
-### GitHub Actions CI/CD
+Shows the Events, Participants, and Registrations endpoints.
+
+### Screenshot 2: GET Participants
+
+Shows a successful 200 OK response when retrieving participant records.
+
+### Screenshot 3: GET Registrations
+
+Shows successful retrieval of event registration records.
+
+### Screenshot 4: GitHub Actions Green Build
+
+Shows successful execution of the Part 2 CI/CD build workflow.
+
+The screenshots are intended to be stored in the repository's `docs` folder.
+
+## GitHub Actions CI/CD
+
+A GitHub Actions workflow was created for Part 2.
 
 Workflow file:
-.github/workflows/part2-build.yml
 
-The workflow restores dependencies and builds
-the RaceDay API using .NET 8.
+`.github/workflows/part2-build.yml`
 
-The Part 2 GitHub Actions build passed successfully.
+The workflow automatically:
 
-### Part 2 Demonstration Video
+1. Checks out the repository.
+2. Installs the .NET 8 SDK.
+3. Restores project dependencies.
+4. Builds the RaceDay API in Release configuration.
 
-YouTube demonstration: [](https://youtu.be/V2Ta4LGTJIs).
+The workflow successfully completed with a green build status.
 
-### Development Status
+[View GitHub Actions](https://github.com/lesegoRamoba/RaceDay/actions)
 
-The three API controllers and SQL Server database
-integration are implemented and tested.
+## Part 2 YouTube Demonstration
 
-Authentication, event categories and race results
-are not included in this basic Part 2 API.
+The following video demonstrates the RaceDay API implementation, Visual Studio project structure, database integration, Swagger testing, and GitHub Actions workflow.
 
+**RaceDay Part 2 Video Presentation:**
 
+[Watch RaceDay API Part 2 Demonstration](https://youtu.be/V2Ta4LGTJIs)
+
+Direct YouTube Link:
+
+https://youtu.be/V2Ta4LGTJIs
+
+## Development Status
+
+### Completed
+
+- ASP.NET Core Web API project setup
+- Event, Participant and Registration models
+- SQL Server database integration
+- Entity Framework Core migrations
+- CRUD API controllers
+- Swagger API testing
+- Error response testing
+- GitHub repository integration
+- Successful Part 2 CI/CD build
+- Part 2 YouTube demonstration
+
+### Future Improvements
+
+- User authentication and authorisation
+- Organiser and participant dashboards
+- Event category management
+- Race results management
+- Stronger data validation
+- Improved relationships between events and registrations
+- Additional automated API tests
+
+---
+
+## GitHub Repository
+
+The complete RaceDay project is available at:
+
+https://github.com/lesegoRamoba/RaceDay
+
+## Conclusion
+
+RaceDay demonstrates the development of a database-driven REST API using C#, ASP.NET Core, Entity Framework Core and SQL Server.
+
+Part 1 established the system design and database planning.
+
+Part 2 implemented working API controllers, database operations, Swagger testing and continuous integration using GitHub Actions.
+
+The project provides a foundation for future development of a complete sporting event management system.
+
+---
+
+**Developed by:** Lesego Ramoba
+
+**Student Number:** ST10490519
+
+**Project:** RaceDay

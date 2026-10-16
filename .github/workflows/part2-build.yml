@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Part2/RaceDay.API/RaceDay.sln
+        run: dotnet restore Part2/RaceDay.sln
 
       - name: Build RaceDay API
-        run: dotnet build Part2/RaceDay.API/RaceDay.sln --configuration Release --no-restore
+        run: dotnet build Part2/RaceDay.sln --configuration Release --no-restore

@@ -107,3 +107,86 @@ SQL execution was checked separately in SSMS.
 
 [Watch my RaceDay Part 1 Video Presentation](https://youtu.be/zF8vHiiyGis)
 
+
+---
+
+## Part 2: RaceDay REST API
+
+Part 2 implements a REST API using ASP.NET Core,
+C#, Entity Framework Core and SQL Server.
+
+### Technologies Used
+
+- C# and ASP.NET Core Web API
+- .NET 8
+- SQL Server LocalDB
+- Entity Framework Core 8
+- Swagger/OpenAPI
+- GitHub Actions CI/CD
+
+### Implemented Features
+
+The API provides CRUD operations for:
+
+- Events
+- Participants
+- Registrations
+
+Supported HTTP methods:
+GET, POST, PUT and DELETE.
+
+### Project Location
+
+Part2/RaceDay.API
+
+### Part 2 Setup Instructions
+
+1. Clone or download the repository.
+2. Open Part2/RaceDay.sln in Visual Studio.
+3. Ensure .NET 8 SDK and SQL Server LocalDB
+   are installed.
+4. Restore the NuGet packages.
+5. Configure DefaultConnection in
+   appsettings.json for your SQL Server instance.
+6. Open the Package Manager Console.
+7. Select RaceDay.API as the default project.
+8. Run Update-Database to apply the migrations.
+9. Press F5 to run the API.
+10. Open /swagger to test the endpoints.
+
+### API Testing
+
+The following operations were tested using Swagger:
+
+- POST: Create an event and participant.
+- GET: Retrieve events, participants and registrations.
+- PUT: Update an existing event.
+- DELETE: Delete an event.
+- GET with an invalid ID: Returns 404 Not Found.
+
+Successful responses included 200 OK,
+201 Created and 204 No Content.
+
+### GitHub Actions CI/CD
+
+Workflow file:
+.github/workflows/part2-build.yml
+
+The workflow restores dependencies and builds
+the RaceDay API using .NET 8.
+
+The Part 2 GitHub Actions build passed successfully.
+
+### Part 2 Demonstration Video
+
+YouTube demonstration: To be added after recording.
+
+### Development Status
+
+The three API controllers and SQL Server database
+integration are implemented and tested.
+
+Authentication, event categories and race results
+are not included in this basic Part 2 API.
+
+

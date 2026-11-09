@@ -391,3 +391,10 @@ The project provides a foundation for future development of a complete sporting 
 **Student Number:** ST10490519
 
 **Project:** RaceDay
+## 🐳 Running with Docker
+
+To build and run the RaceDay MVC application inside a Docker container, run the following command from the repository root:
+
+```bash
+docker build -f Part2/RaceDay.MVC/Dockerfile -t raceday-mvc .
+docker run -p 8080:8080 raceday-mvc

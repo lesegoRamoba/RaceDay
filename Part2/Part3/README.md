@@ -7,6 +7,8 @@
 ## 🎥 Video Presentation
 https://youtu.be/wmVI5z1JeWk
 
+PART 2 CONTAINTS PART 3 INFORMATION
+
 ---
 
 ## 📖 Project Overview

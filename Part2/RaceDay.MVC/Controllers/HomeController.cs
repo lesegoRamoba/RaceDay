@@ -1,32 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using RaceDay.MVC.Models;
-using System.Diagnostics;
+using System.Text.Json;
 
 namespace RaceDay.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _config;
+        private readonly HttpClient _httpClient;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration config)
         {
-            _logger = logger;
+            _config = config;
+            _httpClient = new HttpClient();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var response = await _httpClient.GetAsync($"{_config["ApiSettings:BaseUrl"]}/api/Events");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var events = JsonSerializer.Deserialize<List<Event>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                return View(events);
+            }
+            return View(new List<Event>());
         }
     }
 }

@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<RaceDay.MVC.Models.Event>
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5 mt-4">
+    <h1 class="display-4 fw-bold" style="color: #e63946;">Upcoming RaceDay Events</h1>
+    <p class="lead text-muted">Find your next running, walking, or cycling challenge in South Africa.</p>
+</div>
+
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var ev in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100 border-0" style="border-top: 5px solid #e63946 !important;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-dark">@ev.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">📍 @ev.Location</h6>
+                        <p class="card-text">@ev.Description</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item bg-transparent"><strong>Date:</strong> @ev.Date.ToShortDateString()</li>
+                            <li class="list-group-item bg-transparent"><strong>Distance:</strong> @ev.Distance</li>
+                            <li class="list-group-item bg-transparent"><strong>Type:</strong> @ev.EventType</li>
+                        </ul>
+                        <a href="#" class="btn btn-danger w-100 fw-bold">Enrol Now</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center">
+            <p class="alert alert-info">No events found. Please ensure your API is running and has events.</p>
+        </div>
+    }
 </div>

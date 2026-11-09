@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger">Organiser Dashboard</h2>
+    <hr />
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-dark text-white">
+            <h5>Upload Event Banner (Azure Blob Storage)</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="UploadBanner" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Select Image File:</label>
+                    <input type="file" name="file" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-danger">Upload to Azure via API</button>
+            </form>
+        </div>
+    </div>
+</div>

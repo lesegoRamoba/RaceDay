@@ -17,13 +17,22 @@ namespace RaceDay.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var response = await _httpClient.GetAsync($"{_config["ApiSettings:BaseUrl"]}/api/Events");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                var events = JsonSerializer.Deserialize<List<Event>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                return View(events);
+                var response = await _httpClient.GetAsync($"{_config["ApiSettings:BaseUrl"]}/api/Events");
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var events = JsonSerializer.Deserialize<List<Event>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    return View(events);
+                }
             }
+            catch (Exception ex)
+            {
+                // If API is unreachable inside Docker, it will catch the error here
+                Console.WriteLine($"Error fetching events: {ex.Message}");
+            }
+
             return View(new List<Event>());
         }
     }

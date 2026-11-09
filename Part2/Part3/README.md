@@ -42,10 +42,20 @@ The MVC application will be available at: http://localhost:8080
 ⚙️ GitHub Actions (CI/CD)
 The repository includes a GitHub Actions workflow (.github/workflows/part2-build.yml).
 This workflow is triggered on every push to the main branch. It automatically restores and builds both the Part 2 API and the Part 3 MVC project to ensure code integrity and a green build status.
+https://green_build.png/
 
 ☁️ Azure Blob Storage Integration
-Note on Azure implementation:
-The architecture is designed so that the MVC application handles file uploads by sending them to the API via MultipartFormDataContent. The API then interfaces with Azure Blob Storage. Due to time constraints, the UI for file uploading is scaffolded, and the API endpoints are prepared for the Azure SDK integration.
+To fulfill the rubric requirement (MVC must not talk directly to Azure), the architecture is implemented as follows:
+
+The Organiser selects an image on the MVC Dashboard.
+
+The MVC app sends the file as MultipartFormDataContent to the API's BlobController.
+
+The API uses the Azure.Storage.Blobs SDK and a connection string to upload the file to an Azure Blob container.
+
+(Note: For local development and testing, the official Microsoft Azurite emulator was used via Docker to simulate the Azure environment).
+
+
 
 💻 How to Run Locally (Visual Studio 2022)
 Clone the repository and open Part2/RaceDay.sln in Visual Studio 2022.

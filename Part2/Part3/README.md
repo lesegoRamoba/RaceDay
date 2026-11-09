@@ -15,11 +15,11 @@ PART 2 CONTAINTS PART 3 INFORMATION
 RaceDay is a comprehensive event-management platform for running, walking, and cycling events. 
 Part 3 introduces the **ASP.NET Core MVC frontend** which serves as the user interface for the platform. The MVC application does not contain any direct database access; instead, it communicates entirely with the **Part 2 RESTful API** using `HttpClient`.
 
-### Key Features Implemented in Part 3:
-*   **MVC Architecture:** A clean separation of concerns with Models, Views, and Controllers.
-*   **Session-Based Authentication:** Users can register and log in. Session management is used to maintain the authenticated state across pages, and the navigation bar dynamically changes based on the user's role.
-*   **API Consumption:** The MVC application consumes the Part 2 API for all data operations (Events, Participants, Auth).
-*   **RaceDay Branding:** A custom, energetic UI using Bootstrap, featuring the RaceDay colour palette (Red/Dark Grey), responsive event cards, and a dynamic navigation bar.
+### Key Features Implemented:
+*   **MVC Architecture:** Clean separation of concerns.
+*   **Session-Based Authentication:** Users can register and log in. Session management maintains the authenticated state, and the navigation bar dynamically changes based on the user's login status.
+*   **API Consumption:** The MVC app consumes the API for all data operations (Events, Auth, Blob).
+*   **Azure Blob Architecture:** File uploads are handled by sending the file from the MVC app to the API. The API uses the `Azure.Storage.Blobs` SDK to upload it to Azure storage.
 *   **Docker Integration:** The MVC application is fully containerized.
 
 ---
@@ -31,12 +31,12 @@ To build and run the application inside a Docker container, run the following co
 
 ```bash
 # 1. Build the Docker image
-docker build -f Part2/RaceDay.MVC/Dockerfile -t raceday-mvc .
+docker build -t raceday-mvc -f Part2/RaceDay.MVC/Dockerfile .
 
 # 2. Run the container
 docker run -p 8080:8080 raceday-mvc
-The MVC application will be available at: http://localhost:8080
 
+The MVC application will be available at: http://localhost:8080
 (Note: The API must be running locally on port 7158 for the MVC app to fetch data).
 
 ⚙️ GitHub Actions (CI/CD)

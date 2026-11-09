@@ -40,8 +40,8 @@ The MVC application will be available at: http://localhost:8080
 (Note: The API must be running locally on port 7158 for the MVC app to fetch data).
 
 ⚙️ GitHub Actions (CI/CD)
-The repository includes a GitHub Actions workflow (.github/workflows/part2-build.yml).
-This workflow is triggered on every push to the main branch. It automatically restores and builds both the Part 2 API and the Part 3 MVC project to ensure code integrity and a green build status.
+The repository includes a GitHub Actions workflow (.github/workflows/part2-build.yml). It automatically restores and builds both the Part 2 API and the Part 3 MVC project on every push.
+
 https://green_build.png/
 
 ☁️ Azure Blob Storage Integration

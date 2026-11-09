@@ -42,7 +42,7 @@ The MVC application will be available at: http://localhost:8080
 ⚙️ GitHub Actions (CI/CD)
 The repository includes a GitHub Actions workflow (.github/workflows/part2-build.yml). It automatically restores and builds both the Part 2 API and the Part 3 MVC project on every push.
 
-https://green_build.png/
+https://green-build.png/
 
 ☁️ Azure Blob Storage Integration
 To fulfill the rubric requirement (MVC must not talk directly to Azure), the architecture is implemented as follows:

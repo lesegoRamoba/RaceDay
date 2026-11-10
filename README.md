@@ -22,7 +22,7 @@ The project is developed in stages:
 - **Part 3:** MVC Frontend, Authentication, Azure Blob Storage & Docker
 
 ---
-
+**NB: PART 3 FOLDER IS INSIDE PART 2 FOLDER** 
 ## User Roles
 
 The system supports two main user roles.

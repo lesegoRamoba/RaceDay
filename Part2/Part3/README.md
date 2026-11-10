@@ -5,7 +5,8 @@
 **Repository:** [https://github.com/lesegoRamoba/RaceDay](https://github.com/lesegoRamoba/RaceDay)
 
 ## 🎥 Video Presentation
-https://youtu.be/rBUyLZVxlNU
+https://youtu.be/rBUyLZVxlNU (VIDEO 1)
+https://www.youtube.com/watch?v=wmVI5z1JeWk (VIDEO 2)
 
 PART 2 CONTAINTS PART 3 INFORMATION
 
